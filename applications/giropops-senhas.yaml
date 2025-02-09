@@ -7,7 +7,7 @@ spec:
   project: 'default'
   source:
     helm: {}
-    repoURL: 'https://github.com/stenioignacio/descomplicando-gitops-no-kubernetes-argocd'
+    repoURL: 'https://github.com/stenioignacio/descomplicando-gitops-no-kubernetes-com-argocd'
     targetRevision: feat/day2
     path: giropops-senhas/helm
   destination:

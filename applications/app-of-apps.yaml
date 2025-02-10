@@ -9,7 +9,13 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: app-of-apps
+    path: app-of-apps/templates
+    helm:
+      parameters:
+      - name: argocd.giropops-senhas.enabled
+        value: "true"
+      - name: argocd.random-logger.enabled
+        value: "true"
     repoURL: https://github.com/stenioignacio/descomplicando-gitops-no-kubernetes-com-argocd
     targetRevision: feat/day2
   syncPolicy:

@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     path: random-logger/helm
-    repoURL: https://github.com/stenioignacio/descomplicando-gitops-no-kubernetes-com-argocd.git
+    repoURL: https://github.com/stenioignacio/descomplicando-gitops-no-kubernetes-com-argocd
     targetRevision: feat/day2
   syncPolicy:
     automated:

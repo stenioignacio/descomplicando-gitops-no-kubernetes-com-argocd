@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: app-of-apps/templates
+    path: app-of-apps
     helm:
       parameters:
       - name: argocd.giropopsSenhas.enabled

@@ -1,3 +1,5 @@
+
+{{ if .Values.argocd.grafana.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -12,14 +14,18 @@ spec:
     helm:
       valueFiles:
       - $values/grafana/values.yaml
+      parameters:
+      - name: "ingress.hosts[0]"
+        value: "{{ .Values.argocd.grafana.ingress }}"
   - repoURL: 'https://github.com/stenioignacio/descomplicando-gitops-no-kubernetes-com-argocd'
     targetRevision: feat/day2
     ref: values
-  destination:
-    namespace: monitoring
-    server: 'https://kubernetes.default.svc'
   syncPolicy:
     automated:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+  destination:
+    namespace: prometheus
+    server: https://kubernetes.default.svc
+{{ end }}

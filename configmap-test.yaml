@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  # disables user. Desabilita todos os usuarios criados fora o admin do argo
+
+  accounts.stenio: apiKey, login
+  accounts.stenio.password: "123" # Substitua pela sua senha criptografada
+
+  accounts.paulo: apiKey, login
+  accounts.paulo.enabled: "false"
+  accounts.paulo.password: "$2a$10$algumaCoisaAqui.outraCoisaAqui.maisCoisaAqui" # Substitua pela sua senha criptografada

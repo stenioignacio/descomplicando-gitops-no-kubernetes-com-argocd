@@ -34,3 +34,24 @@ http://localhost:8080
 ```sh
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
+
+# Conectando um repositorio Github no ArgoCD
+
+No Github:
+
+- "Settings" da sua conta
+- Developer Settings
+- Personal access tokens / Tokens(classic) / Generate new token (Generate new token (classic) - For general use)
+
+Dentro do ArgoCD:
+
+Settings -> Repositories -> Connect Repo:
+
+- Mudar de "VIA SSH" para "VIA HTTPS"
+- Adicionar um nome para a conexao (opicional)
+- 'Project' sera "default"
+- Adicionar o link do repositorio git (Exemplo: https://github.com/usuario/nome-do-repositorio.git)
+- Username: "token"
+- Password: TokenGitHubClassic
+- Seleciona a flag "Skip server verification"
+- Clique em "Connect" na parte superior ✅

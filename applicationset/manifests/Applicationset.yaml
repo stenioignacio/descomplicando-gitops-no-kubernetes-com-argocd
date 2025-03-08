@@ -7,17 +7,25 @@ spec:
   goTemplate: true
   goTemplateOptions: [ "missingkey=error" ]
   generators:
-  - git:
-      repoURL: https://github.com/stenioignacio/descomplicando-gitops-no-kubernetes-com-argocd.git
-      revision: feat/day3
-      directories:
-      - path: applicationset/apps/*/helm
-      # Caso eu não queira usar um app especifico, eu passo o "exclude: true"
-      # - path: applicationset/apps/random-logger/helm
-      #   exclude: true
+  - matrix:
+    - git:
+        repoURL: https://github.com/stenioignacio/descomplicando-gitops-no-kubernetes-com-argocd.git
+        revision: feat/day3
+        directories:
+        - path: applicationset/apps/*/helm
+        # Caso eu não queira usar um app especifico, eu passo o "exclude: true"
+        # - path: applicationset/apps/random-logger/helm
+        #   exclude: true
+    - git:
+        repoURL: https://github.com/stenioignacio/descomplicando-gitops-no-kubernetes-com-argocd.git
+        revision: feat/day3
+        pathParamPrefix: cfg
+        files:
+        - path: applicationset/configs/dev.json
+
   template:
     metadata:
-      name: '{{index .path.segments 2}}'
+      name: '{{index .path.segments 2}}-{{.cluster.name}}'
     spec:
       project: "default"
       source:
